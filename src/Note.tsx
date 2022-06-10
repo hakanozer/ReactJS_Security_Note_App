@@ -9,6 +9,7 @@ import { NoteType } from './use_redux/types/NoteType'
 import { firstCharUpper } from './Util'
 import HeaderTitle from './components/HeaderTitle'
 import Moment from 'moment';
+import './css/Site.css'
 
 
 // Context
@@ -136,20 +137,20 @@ function Note() {
     { fncAnimDiv() }
     <div className='row'>
       <div className='col-10'>
-        <p className="lead" style={{ color: context.textColor }}  >
+        <p className="lead responsive-font" style={{ color: context.textColor }}  >
           Notlarınızı sadece sizin görebileceğiniz tam güvenli not uygulaması.
         </p>
       </div>
       <div className='col-2'>
         <div className="text-end">
-          <button onClick={()=> allDataClear()} className='btn btn-danger pull-right'>Tüm Bilgileri Sil</button>
+          <button onClick={()=> allDataClear()} className='btn btn-danger pull-right' data-bs-toggle="tooltip" data-bs-placement="top" title="Çıkış Yap ve Tüm Verileri Sil"><i className="bi bi-eye-slash"></i></button>
         </div>
       </div>
     </div>
     
     <hr></hr>
     <div className='row'>
-      <div className='col-sm-5'>
+      <div className='col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6'>
         <h2 className='display-6'>Not Listesi</h2>
         <div className="list-group ">
         <a className="list-group-item list-group-item-action active">Notlar</a>
@@ -158,7 +159,7 @@ function Note() {
         )}
         </div>
       </div>
-      <div className='col-sm-7'>
+      <div className='mt-4 col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-xs-3 mt-sm-3 mt-md-3 mt-lg-0 mt-xl-0 '>
       <h2 className='display-6'>Not Kayıt</h2>
         <form onSubmit={handleSubmit} >
           <div className="mb-3">
