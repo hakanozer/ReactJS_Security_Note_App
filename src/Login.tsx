@@ -68,6 +68,7 @@ function Login() {
                 passForm && 
                 <>
                   <h2 className='text-center text-success'>Giriş Yap</h2>
+                  <span className="badge bg-dark">Daha önce belirlediğiniz şifrenizi giriniz!</span>
                   <div className='mt-3'>
                     <label className="form-label" htmlFor='pass3'>Şifre</label>
                     <input id='pass3' onChange={ (evt) => setNowPass( evt.target.value ) } className="form-control form-control-lg" type="password" placeholder="Şifre" aria-label="Şifre" />

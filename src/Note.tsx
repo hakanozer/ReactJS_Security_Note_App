@@ -112,7 +112,7 @@ function Note() {
 
   // all data clear
   const allDataClear = () => {
-    const answer = window.confirm("Tüm datalarınız ve şifreniz silinecek, onaylıyormusunuz")
+    const answer = window.confirm("Tüm datalarınız ve şifreniz silinecek, onaylıyor musunuz?")
     if (answer) {
       localStorage.removeItem('notes')
       localStorage.removeItem('userPass')
