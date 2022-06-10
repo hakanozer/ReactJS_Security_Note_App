@@ -1,3 +1,3 @@
 export enum NoteType {
-     SAVE, DELETE, LIST
+     SAVE, DELETE, LIST, ALLDELETE
 }

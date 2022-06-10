@@ -53,7 +53,7 @@ function Login() {
                   <h2 className='text-center'>Şifre Belirle</h2>
                   <div className='mt-3'>
                     <label className="form-label" htmlFor='pass1'>Şifre</label>
-                    <input id='pass1' onChange={ (evt) => setPass1( evt.target.value ) } className="form-control form-control-lg" type="password" placeholder="Şifre" aria-label="Şifre" />
+                    <input id='pass1' onChange={ (evt) => setPass1( evt.target.value ) } className="form-control form-control-lg" type="password" placeholder="Şifre - En az 5 karakter" aria-label="Şifre" />
                   </div>
                   {
                     pass1.length > 4 &&
@@ -67,7 +67,7 @@ function Login() {
               {
                 passForm && 
                 <>
-                  <h2 className='text-center'>Şifre Giriniz</h2>
+                  <h2 className='text-center text-success'>Giriş Yap</h2>
                   <div className='mt-3'>
                     <label className="form-label" htmlFor='pass3'>Şifre</label>
                     <input id='pass3' onChange={ (evt) => setNowPass( evt.target.value ) } className="form-control form-control-lg" type="password" placeholder="Şifre" aria-label="Şifre" />

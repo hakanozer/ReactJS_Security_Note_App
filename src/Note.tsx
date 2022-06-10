@@ -10,12 +10,14 @@ import { firstCharUpper } from './Util'
 import HeaderTitle from './components/HeaderTitle'
 import Moment from 'moment';
 
+
 // Context
 import { ThemeContext, themes } from './ThemeContext'
 
 // Animation lib
 import  styled, { keyframes } from 'styled-components';
 import { slideInDown, fadeIn } from 'react-animations'
+import { useNavigate } from 'react-router-dom'
 
 const notTitleAnim = keyframes`${slideInDown}`
 const NoteTitleDiv = styled.div`animation: forwards 1.0s ${notTitleAnim};`;
@@ -24,6 +26,9 @@ const animation = keyframes`${fadeIn}`
 const AnimateDiv = styled.div`animation: forwards 1.5s ${animation};`;
 
 function Note() {
+
+  // navigation
+  const navigate =  useNavigate()
 
   // useRef -> componentlere uygulama düzeyinde hakim olmak için kullanılır.
   const titleRef = useRef<HTMLInputElement>(null)
@@ -104,6 +109,23 @@ function Note() {
   const [themeState, setThemeState] = useState(themes.light)
   const context = useContext(ThemeContext)
   // https://dev.to/nas5w/toggling-light-dark-theme-in-react-with-usecontext-39hn
+
+  // all data clear
+  const allDataClear = () => {
+    const answer = window.confirm("Tüm datalarınız ve şifreniz silinecek, onaylıyormusunuz")
+    if (answer) {
+      localStorage.removeItem('notes')
+      localStorage.removeItem('userPass')
+      const note:INote = { title: '',detail: ''}
+      const deleteAllAction:NoteAction = {
+        type: NoteType.ALLDELETE,
+        payload: note
+      }
+      dispatch(deleteAllAction)
+      navigate('/')
+    }
+  }
+
   return (
     <>
     <ThemeContext.Provider value={themeState}>
@@ -112,9 +134,19 @@ function Note() {
       */}
     { /*context.textColor*/ }
     { fncAnimDiv() }
-    <p className="lead" style={{ color: context.textColor }}  >
-      Notlarınızı sadece sizin görebileceğiniz tam güvenli not uygulaması.
-    </p>
+    <div className='row'>
+      <div className='col-10'>
+        <p className="lead" style={{ color: context.textColor }}  >
+          Notlarınızı sadece sizin görebileceğiniz tam güvenli not uygulaması.
+        </p>
+      </div>
+      <div className='col-2'>
+        <div className="text-end">
+          <button onClick={()=> allDataClear()} className='btn btn-danger pull-right'>Tüm Bilgileri Sil</button>
+        </div>
+      </div>
+    </div>
+    
     <hr></hr>
     <div className='row'>
       <div className='col-sm-5'>

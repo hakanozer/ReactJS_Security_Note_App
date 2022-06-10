@@ -18,11 +18,13 @@ export function NoteReducer(  state: INote[] = fncNotes(),  action: NoteAction  
             //state.push( action.payload )
             const saveState = [ ...state, action.payload  ]
             return fncNotes(saveState)
-
         case NoteType.DELETE:
             const index = state.findIndex( item => item === action.payload )
             state.splice(index, 1)
         return fncNotes(state)
+
+        case NoteType.ALLDELETE: 
+        return []
 
         default:
             return fncNotes()
