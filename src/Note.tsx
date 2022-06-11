@@ -127,6 +127,18 @@ function Note() {
     }
   }
 
+  // for jquery lib refresh
+  useEffect(() => {
+    const stOpen = sessionStorage.getItem('open')
+    if ( !stOpen ) {
+      sessionStorage.setItem('open', 'open')
+      setTimeout(() => {
+        window.location.reload()
+      }, 1);
+    }
+  }, [])
+  
+
   return (
     <>
     <ThemeContext.Provider value={themeState}>
